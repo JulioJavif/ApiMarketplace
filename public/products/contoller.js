@@ -42,4 +42,31 @@ module.exports.ProductsController = {
           console.error(error)
         }
       },
+      createProduct: (req, res)=>{
+        const product = req.body;
+        try {
+          pool.query(
+            `INSERT INTO products
+            (id, image, title, price, description, stok, createdAt, updatedAt)
+            VALUES (
+              '${product.id}',
+              '${product.image}',
+              '${product.title}',
+              '${product.price}',
+              '${product.description}',
+              '${product.stok}',
+              '${fecha}',
+              '${fecha}')`,
+            (error, result)=>{
+              if(error){
+                console.log(error)
+              }
+              res.status(201).send(
+                result
+              );
+          })
+        } catch (error) {
+          console.error(error)
+        }
+      }
 }
