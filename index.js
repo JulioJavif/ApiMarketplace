@@ -3,7 +3,8 @@ const cors = require('cors');
 const { ServerConfig } = require('./config/server');
 const APIAuth = require('./public/auth/index');
 const APIUser = require('./public/user/index');
-const apiProducts = require('./public/products/index')
+const apiProducts = require('./public/products/index');
+const APIPqrs = require('./public/pqrs/index');
 
 const bodyParser = require('body-parser');
 const app = express();
@@ -16,7 +17,7 @@ app.use(bodyParser.json());
 APIAuth(app);
 APIUser(app);
 apiProducts(app)
-
+APIPqrs(app);
 
 const port = ServerConfig.PORT || 4001;
 
